@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HungryHero.com</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Roboto, sans-serif;
+    }
+
+    .find-container {
+      width: 70%;
+      height: 80vh;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 40px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .find-container h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      margin-top: 0;
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-container input {
+      width: 97.5%;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .find-button {
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      width: 100%;
+      padding: 15px;
+      border-radius: 7px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .find-button:hover {
+      background-color: #333333;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .header img {  /*상단 그림 두 개 크기*/
+      width: 80px;
+    }
+
+    .header a { /*my page css*/
+      display: inline-block;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .findpw-link {
+      text-align: right;
+      font-size: 15px;
+      margin-top: 15px;
+      cursor: pointer; 
+      color: blue; 
+      text-decoration: underline; 
+    }
+  </style>
+</head>
+<body>
+  <div class="find-container">
+    <div class="header">
+      <img style="width:200px;" src="./assets/logop.png" alt="logo">
+      <a href="mypage.html"><img src = ./assets/mypage.png/></a>
+    </div>
+    <h2>ID 찾기</h2>
+    <form>
+      <div class="input-container">
+        <label for="name">이름</label>
+        <input type="text" id="name" placeholder="이름을 입력해주세요">
+      </div>
+      <div class="input-container">
+        <label for="studentID">학번</label>
+        <input type="text" id="studentID" placeholder="학번을 입력해주세요">
+      </div>
+      <div class="input-container">
+        <button class="find-button" type="button" onClick="findID()">ID 찾기</button>
+      </div>
+      <div class="input-container">
+        <p class="findpw-link" onClick="redirectToFindPassword()">비밀번호 찾기</p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function findID() {
+        // id 찾는 로직 넣기
+
+      alert("당신의 ID는 ~입니다.");
+    }
+
+    function redirectToFindPassword() {
+      window.location.href = "findpw.html";
+    }
+  </script>
+</body>
+</html>

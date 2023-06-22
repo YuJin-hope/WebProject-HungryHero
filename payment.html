@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>HungryHero.com</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Roboto, sans-serif;
+        }
+        .body-top {
+            display: flex;
+            width: 100%;
+            height: 15vh;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .body-top-right{
+            width:10%;
+            height: 15vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .body-top-middle{
+            width:80%;
+            height: 15vh;
+        }
+        .body-top-middle h1{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 40px;
+        }
+        .body-top-left{
+            width: 10%;
+            height: 15vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .body-middle {
+            display: flex;
+            width: 100%;
+            height: 85vh;
+            border-radius: 5px;
+        }
+        .body-middle-left{
+            width: 50%;
+            height: 85vh;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .body-middle-left-box{
+            width: 50%;
+            height: 40vh;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+            margin: 10px;
+        }
+        .body-middle-right{
+            background-color: #ffffff;
+            width:50%;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .body-middle-right div{
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+        .body-middle-right label{
+            font-size: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 80px;
+        }
+        button.button_2 {
+            border: 0;
+            outline: none;
+            font-size: 20px;
+            margin: 30px;
+            background: black;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        button.button_2:hover {
+            color: white;
+            background: rgb(72, 77, 146);
+        }
+    </style>
+</head>
+<body>
+    <div class="body-top">
+        <div class="body-top-left">
+            <img src="./assets/logop.png" alt="mjuIcon" style="width: 200px; margin-bottom: 10px; margin-left: 100px">
+        </div>
+        <div class="body-top-middle">
+            <h1>식권 결제</h1>
+        </div>
+        <div class="body-top-right">
+            <img src="./assets/mypage.png" alt="My Image" style="width: 80px;">
+        </div>
+    </div>
+    <div class="body-middle">
+        <div class="body-middle-left">
+            <div class="body-middle-left-box">
+                <h2>구매 식단 정보</h2>
+                <span id="menuResult"></span>
+            </div>
+        </div>
+        <div class="body-middle-right">
+            <div>
+                <label for="dateSelectLb">구매날짜</label>
+            </div>
+            <div>
+                <label for="timeSelectLb">코스정보</label>
+                <span id="subtitleResult"></span> <Text>,</Text>
+                <span id="titleResult"></span>
+            </div>
+            <div>
+                <label for="paymentOptionLb">결제 수단</label><br>
+                <label><input type="radio" name="fruit" value="apple"> 신용카드</label>
+                <label><input type="radio" name="fruit" value="apple"> 카카오페이</label>
+                <label><input type="radio" name="fruit" value="apple"> 토스페이</label>
+                <label><input type="radio" name="fruit" value="apple"> 페이코</label><br>
+                <label><input type="radio" name="fruit" value="apple"> 네이버페이</label>
+                <label><input type="radio" name="fruit" value="apple"> 계좌이체</label>
+                <label><input type="radio" name="fruit" value="apple"> 무통장입금</label>
+                <label><input type="radio" name="fruit" value="apple"> 휴대폰결제</label><br>
+            </div>
+            <div>
+                <label for="totalPrice">결제금액</label>
+                <span id="priceResult"></span>
+            </div>
+            <div class="button-container">
+                <button class="button_2" type="button" onclick="redirectToPage()">결제하기</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var title = urlParams.get('title');
+    var subtitle = urlParams.get('subtitle');
+    var menu = urlParams.get('menu');
+    var price = urlParams.get('price');
+    var quantity = urlParams.get('quantity');
+
+    menu = menu.replace(/\n/g, '<br>');
+
+    document.getElementById('titleResult').textContent = title;
+    document.getElementById('subtitleResult').textContent = subtitle;
+    document.getElementById('menuResult').innerHTML = menu;
+    document.getElementById('priceResult').textContent = price;
+
+    function redirectToPage() {
+        var title = document.getElementById('titleResult').textContent;
+        var subtitle = document.getElementById('subtitleResult').textContent;
+
+        window.location.href = 'paymentResult.html?title=' + encodeURIComponent(title) + '&subtitle=' + encodeURIComponent(subtitle)
+        +'&quantity=' + encodeURIComponent(quantity);
+    }
+</script>

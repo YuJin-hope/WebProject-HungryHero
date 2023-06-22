@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HungryHero.com</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Roboto, sans-serif;
+    }
+
+    .signup-container {
+      width: 75%;
+      height: 80vh;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 40px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .signup-container img {
+      display: block;
+      margin: 0 auto 10px;
+      width: 100px;
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+      margin-top: 0;
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-container input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .signup-button {
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      width: 100%;
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .signup-button:hover {
+      background-color: #333333;
+    }
+
+    .payment-QRView {
+      text-align: center;
+      font-weight: bold;
+      font-size: 150%;
+    }
+
+    .input-text {
+      text-align: center;
+      color: #333333
+    }
+  </style>
+</head>
+
+<body>
+  <div class="signup-container">
+    <img src="./assets/HHHH.jpg" alt="logo" style="width: 300px;">
+    <div class="payment-QRView">
+      <!--<div id="qrcode"></div>-->
+      <img src="./assets/qrHH.jpg" alt="logo" style="width: 300px;">
+      식권 QR 발급이 완료되었습니다.
+    </div>
+    <div class="input-text">
+      구매하신 lunchA 식권은 금일 11:30 ~ 14:00 에 사용 가능합니다!
+    </div>
+    <button class="signup-button" type="button" onClick="location.href='hero-center-image.html'">처음 화면으로</button>
+  </div>
+
+  <!-- jQuery 라이브러리 로드 -->
+  <script type="text/javascript" src="jquery.min.js"></script>
+
+  <!-- qrcode.js 라이브러리 로드 -->
+  <script type="text/javascript" src="qrcode.js"></script>
+
+  <script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: "http://127.0.0.1:5501/todaySikdan.html", 
+      width: 400,
+      height: 400,
+      colorDark: "#555",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    qrcode.make();
+
+    var qrImageTag = document.getElementById("qrcode").getElementsByTagName("img")[0];
+    qrImageTag.style.width = "400px";
+    qrImageTag.style.height = "400px";
+    qrImageTag.style.margin = "auto";
+  </script>
+</body>
+
+</html>
